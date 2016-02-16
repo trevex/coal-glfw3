@@ -21,4 +21,4 @@ class GLFW3File(CoalFile):
     def info(self):
         info = Info()
         info.LD_FLAGS = pkg_config('glfw3', path='libs/pkgconfig')
-        pass
+        return info
