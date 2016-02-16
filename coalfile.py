@@ -1,5 +1,5 @@
 from coal import CoalFile
-from util import download, unzip, default_cmake_build, cp
+from util import download, unzip, default_cmake_build, cp, pkg_config, Info
 from os import path
 
 class GLFW3File(CoalFile):
@@ -17,6 +17,9 @@ class GLFW3File(CoalFile):
         cp('src/glfw-%s/include' % self.version, 'include')
         cp('build/src/*.a', 'libs/')
         cp('build/src/*.lib', 'libs/')
-        cp('build/src/*.pc', 'libs/pkg_config/')
+        cp('build/src/*.pc', 'libs/pkgconfig/')
     def info(self, deps):
+        info = Info()
+        info.LD_FLAGS = pkg_config('glfw3', path='libs/pkgconfig')
+        print(info)
         pass
