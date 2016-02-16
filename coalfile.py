@@ -8,7 +8,7 @@ class GLFW3File(CoalFile):
     url = "https://github.com/glfw/glfw/releases/download/%s/%s" % (version, zipfile)
     exports = ["include", "libs"]
 
-    def prepare(self):
+    def prepare(self, infos):
         download(self.url, self.zipfile)
         unzip(self.zipfile, 'src')
     def build(self):
@@ -18,7 +18,7 @@ class GLFW3File(CoalFile):
         cp('build/src/*.a', 'libs/')
         cp('build/src/*.lib', 'libs/')
         cp('build/src/*.pc', 'libs/pkgconfig/')
-    def info(self, deps):
+    def info(self):
         info = Info()
         info.LD_FLAGS = pkg_config('glfw3', path='libs/pkgconfig')
         pass
