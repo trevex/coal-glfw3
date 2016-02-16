@@ -18,5 +18,5 @@ class GLFW3File(CoalFile):
         cp('build/src/*.a', 'libs/')
         cp('build/src/*.lib', 'libs/')
         cp('build/src/*.pc', 'libs/pkg_config/')
-    def info(self):
+    def info(self, deps):
         pass
