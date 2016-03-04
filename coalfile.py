@@ -19,6 +19,6 @@ class GLFW3File(CoalFile):
         cp('build/src/*.lib', 'libs/')
         cp('build/src/*.pc', 'libs/pkgconfig/')
     def info(self, generator):
-        generator.add_library("GLFW3", pkg_config('glfw3', path='libs/pkgconfig'))
+        generator.add_library(pkg_config('glfw3', path='libs/pkgconfig'))
         generator.add_link_dir('libs/')
         generator.add_include_dir('include/')
